@@ -12,12 +12,14 @@ const { MENU_LINKS } = require("./constants/navigation");
 const getFileFromAbsolutePath = require("./utils/getFileFromAbsolutePath");
 const cartController = require("./controllers/cartController");
 
+const path = require('path');
 const app = express();
 
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-app.use(express.static(getFileFromAbsolutePath("public")));
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((request, _response, next) => {
